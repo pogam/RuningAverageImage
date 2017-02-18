@@ -6,6 +6,7 @@ If you want to change the average pattern to the 4 nearest neighbor,
 `footprint` and `nbre_neighbour` need to be modified accordingly. 
 
 **Example:**
+
 	python runingAverageImage.py 
 	input
 	----
