@@ -47,7 +47,7 @@ def runing_minmax_neighbor(x,window_size,flag='max'):
     
     def min_func(values):
         return values.min()
-
+    
     def padwithlow(vector, pad_width, iaxis, kwargs):
         vector[:pad_width[0]] = x.min() - 1
         vector[-pad_width[1]:] = x.min() - 1
@@ -56,6 +56,11 @@ def runing_minmax_neighbor(x,window_size,flag='max'):
     def padwithhigh(vector, pad_width, iaxis, kwargs):
         vector[:pad_width[0]] = x.max() + 1
         vector[-pad_width[1]:] = x.max() + 1
+        return vector
+    
+    def padwithzeros(vector, pad_width, iaxis, kwargs):
+        vector[:pad_width[0]]  = 0
+        vector[-pad_width[1]:] = 0
         return vector
     
     footprint = np.ones([window_size,window_size])
@@ -70,19 +75,19 @@ def runing_minmax_neighbor(x,window_size,flag='max'):
         print 'bad flag = ', flag
         sys.exit()
 
+if __name__ == '__main__':
 
-
-x = np.arange(7*7).reshape(7,7)
-print 'input'
-print '----'
-print x
-print ''
-print 'runing average'
-print '----'
-print runing_mean_neighbor(x)
-print 'runing max'
-print '----'
-print runing_minmax_neighbor(x,5)
-print 'runing min'
-print '----'
-print runing_minmax_neighbor(x,5,flag='min')
+    x = np.arange(7*7).reshape(7,7)
+    print 'input'
+    print '----'
+    print x
+    print ''
+    print 'runing average'
+    print '----'
+    print runing_mean_neighbor(x)
+    print 'runing max'
+    print '----'
+    print runing_minmax_neighbor(x,5)
+    print 'runing min'
+    print '----'
+    print runing_minmax_neighbor(x,5,flag='min')
